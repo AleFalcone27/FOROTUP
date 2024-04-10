@@ -3,9 +3,11 @@ FRONTEND
 
 BACKEND
 - Investigar configuracion de los documentos de Mongodb para poder determimnar el tipo de dato entre otros
+- Crear inyeccion a la base de datos de un post
 
 
 9/4
 16:30
 - Inicializo el proyecto y el repo 
-- 
+- Creo el modelo Post
+- Creo el modelo User

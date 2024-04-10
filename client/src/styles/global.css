@@ -1,0 +1,13 @@
+body{
+    margin: 0;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 100; 
+}
+
+
+::selection{
+    background-color:#017A8B;
+}

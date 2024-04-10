@@ -1,0 +1,82 @@
+.login-page{
+    
+    .container{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        background-color: #F5F5F5;
+        display: flex;
+        flex-direction: row;
+
+        .section-login{
+            background-color:#006097;  
+            display: flex;
+            height: 100vh;
+            width: 45vw;
+            align-items: center;
+            justify-content: center;
+            
+
+            .login-container{
+                background-color: #F5F5F5;
+                height: 40%;
+                width: 70%;
+                display: flex;
+                flex-direction: column;
+                border: solid #030303 1px;
+
+                h2 {
+                    align-self: center;
+                    font-size: 2em;
+                }
+
+                input {
+                    font-size: 100;
+                    margin:2vh 0;
+                    height: 10%;
+                    width: 80%;
+                    align-self:center;
+                    border: solid #030303 1px;   
+                }
+
+                input::placeholder{
+                    color: #999; 
+                    font-size: 14px; 
+                }
+
+                .btn-container{
+                    height: 10vh;
+                    width: 81%;
+                    display: flex;
+                    align-self: center;
+                    align-items: center;
+                    justify-content: space-between;
+                    
+                    input{
+                        background-color: #006097;
+                        color: #F5F5F5;
+                        margin: 0;
+                        height: 4vh;
+                        width: 49%;
+                        font-size: 1em;  
+                    }
+
+                    input:hover{
+                        background-color:#F5F5F5 ;
+                        color: #006097;
+                        border: solid #006097 1px; 
+                        font-size: 1.1em;
+                    }
+                }
+            }
+        }
+
+
+        
+        .section-aside{
+            display: flex;
+            height: 100vh;
+            width: 55vw;
+        }
+    }
+}
