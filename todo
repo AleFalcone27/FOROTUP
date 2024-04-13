@@ -1,5 +1,5 @@
 FRONTEND
-
+- HACER UN POCO MAS RESPONSIVE EL LOGIN PAGE
 
 BACKEND
 - Investigar configuracion de los documentos de Mongodb para poder determimnar el tipo de dato entre otros
@@ -11,3 +11,10 @@ BACKEND
 - Inicializo el proyecto y el repo 
 - Creo el modelo Post
 - Creo el modelo User
+
+
+12/4 
+1:30 hs
+- Conexion con el backend
+- Creo componente de Register
+- Configuro un ruteo reutilizable desde el componente main 
