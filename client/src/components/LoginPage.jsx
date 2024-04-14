@@ -59,10 +59,10 @@ const LogIn = () => {
                             onClick={handleSubmit}
                             />
                             <a href="/register">
-                            <input 
-                                type="button" 
-                                value="REGISTRARSE"  
-                            />
+                                <input 
+                                    type="button" 
+                                    value="REGISTRARSE"  
+                                />
                             </a>
      
                              

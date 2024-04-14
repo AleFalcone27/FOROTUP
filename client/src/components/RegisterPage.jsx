@@ -9,25 +9,35 @@ const Register = () => {
     const [username, setUsername] = useState('');
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await fetch(`${API_URL}/register`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, email, password }) 
-            });
-            if (response.ok) {
-                const data = await response.json();
-                console.log(data); 
-            } else {
-                console.error('Error al enviar los datos');
+
+        if (email !== null && email !== "" &&
+        username !== null && username !== "" &&
+        password !== null && password !== ""){
+
+            e.preventDefault();
+            try {
+                const response = await fetch(`${API_URL}/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password,username }) // agregar los demas datos de registro 
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data); 
+                } else {
+                    console.error('Error al enviar los datos');
+                }
+            } catch (error) {
+                console.error('Error:', error);
             }
-        } catch (error) {
-            console.error('Error:', error);
+        }
+        else {
+            alert('credenciales incorrectas')
         }
     };
+        
 
     return (
         <nav className='login-page'>
@@ -38,26 +48,25 @@ const Register = () => {
 
                         <h2> REGISTRATE </h2>
                         <input 
-                            className='input-email' 
-                            type="text" 
-                            placeholder='Email'
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                        className='input' 
+                        type="text" 
+                        placeholder='Username'
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                         />
                         <input 
-                            className='input-email' 
-                            type="text" 
-                            placeholder='Username'
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                        className='input1' 
+                        type="text" 
+                        placeholder='Email'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         />
-
                         <input 
-                            className='input-pass' 
-                            type="text" 
-                            placeholder='Password'
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)} 
+                        className='input' 
+                        type="text" 
+                        placeholder='Password'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)} 
                          />
                         <div className='btn-container' >
                             <a href="/">

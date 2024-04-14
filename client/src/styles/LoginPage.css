@@ -16,7 +16,6 @@
             align-items: center;
             justify-content: center;
             
-
             .login-container{
                 background-color: #F5F5F5;
                 height: 40%;
@@ -46,31 +45,31 @@
 
                 .btn-container{
                     height: 10vh;
-                    width: 81%;
+                    width: 100%;
                     display: flex;
                     align-self: center;
                     align-items: center;
                     justify-content: space-between;
                     
                     a{
-                        width: 10vw;
+                    
                         input{
                             background-color: #006097;
                             color: #F5F5F5;
                             margin: 0;
                             height: 4vh;
-                            width: 100%;
                             font-size: 1em;  
+                            width: 100%;
                         }
                     }
-                    
+
                     input{
                         background-color: #006097;
                         color: #F5F5F5;
                         margin: 0;
                         height: 4vh;
-                        width: 49%;
                         font-size: 1em;  
+                        width: 40%;
                     }
 
                     input:hover{

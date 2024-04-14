@@ -16,7 +16,7 @@
             align-items: center;
             justify-content: center;
             
-            
+
             .login-container{
                 background-color: #F5F5F5;
                 height: 50%;
@@ -52,28 +52,17 @@
                     align-items: center;
                     justify-content: space-between;
                     
-                    a{
-                        width: 10vw;
-                        input{
-                            background-color: #006097;
-                            color: #F5F5F5;
-                            margin: 0;
-                            height: 4vh;
-                            width: 100%;
-                            font-size: 1em;  
-                        }
-                    }
-
-                    
                     input{
                         background-color: #006097;
                         color: #F5F5F5;
                         margin: 0;
                         height: 4vh;
-                        width: 49%;
                         font-size: 1em;  
                     }
 
+                    a{
+                        width: 100%
+                    }
 
                     input:hover{
                         background-color:#F5F5F5 ;
@@ -86,6 +75,7 @@
         }
 
 
+        
         .section-aside{
             display: flex;
             height: 100vh;
