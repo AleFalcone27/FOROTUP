@@ -1,12 +1,12 @@
 import React, {useState, useEffect, Link} from 'react';
-import '../styles/LoginPage.css'
+import '../styles/RegisterPage.css'
 
 const API_URL = 'http://127.0.0.1:5000';
 
 const Register = () => {
-    const [data, setData] = useState([{}]);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -16,7 +16,7 @@ const Register = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email, password }) // agregar los demas datos de registro 
+                body: JSON.stringify({ username, email, password }) 
             });
             if (response.ok) {
                 const data = await response.json();
@@ -29,7 +29,6 @@ const Register = () => {
         }
     };
 
-
     return (
         <nav className='login-page'>
             <div className='container'>
@@ -39,26 +38,33 @@ const Register = () => {
 
                         <h2> REGISTRATE </h2>
                         <input 
-                        className='input-email' 
-                        type="text" 
-                        placeholder='Email'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                            className='input-email' 
+                            type="text" 
+                            placeholder='Email'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                         <input 
-                        className='input-pass' 
-                        type="text" 
-                        placeholder='Password'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)} 
+                            className='input-email' 
+                            type="text" 
+                            placeholder='Username'
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+
+                        <input 
+                            className='input-pass' 
+                            type="text" 
+                            placeholder='Password'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)} 
                          />
                         <div className='btn-container' >
                             <a href="/">
-                            <input 
-                            type="button" 
-                            value="INGRESAR"
-                            />
-                                
+                                <input 
+                                    type="button" 
+                                    value="INGRESAR"
+                                />
                             </a>
                              <input 
                                 type="button" 
