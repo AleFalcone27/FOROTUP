@@ -1,6 +1,5 @@
 from flask import Flask, Blueprint, jsonify, request
 from models.user import User
-#db = Database(uri, "Cluster0", "database_products.test")
 
 app_routes = Blueprint("app_routes", __name__,
                        template_folder="templates",
@@ -21,6 +20,7 @@ def login():
     if '@' not in email:
         return jsonify({"Error": "Incorrect format email"})
     else:
+        
         # Confrotar datos con la base de datos 
         
         return jsonify({"message": "Incorrect Email"})
@@ -41,5 +41,9 @@ def register():
         return jsonify({'Error':'incorrect Email'})
     else:
         new_user = User(username,email,password) 
-        # Guardar el nuevo usuario en la base de datos
-        return jsonify({"message": "Register sucessfull"})
+        if new_user.is_not_already_signed_up():
+            if new_user.sign_up():
+                return jsonify({"message": "Register sucessfull"})
+            else: return jsonify({"message": "Register unsucessfull"})
+        else: return jsonify({"message": "User already registered"})
+        
