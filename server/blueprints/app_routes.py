@@ -1,5 +1,7 @@
 from flask import Blueprint, jsonify, request
 from models.user import User
+from models.dbConnection import Database
+from models.post import Post
 from utilities.validation import *
 
 app_routes = Blueprint("app_routes", __name__,
@@ -9,6 +11,7 @@ app_routes = Blueprint("app_routes", __name__,
 @app_routes.route('/', methods=['GET'])
 def root():
     return jsonify({"message": "running"})
+
 
 @app_routes.route('/login', methods=['POST'])
 def login():
@@ -24,6 +27,7 @@ def login():
             return jsonify({"Error": "Credenciales correctas"})
 
         else: return jsonify({"Error": "Incorrect credentials"})
+       
         
 @app_routes.route('/register', methods=['POST'])
 def register():
@@ -43,3 +47,14 @@ def register():
         return jsonify({'Error':'Formato de email o usuario incorrecto'})
         
         
+@app_routes.route('/feed', methods=['GET'])
+async def feed():
+    
+    ## new_post = Post('PANINI GATE','Juntemos firmas para que vuelvan los paninis al buffet','Ale Falcone')
+    
+    ## new_post.insert()
+    
+    posts = await Database.get_posts() 
+    return jsonify({'Posts': jsonify(posts)})   
+    
+    

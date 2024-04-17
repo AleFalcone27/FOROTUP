@@ -40,10 +40,6 @@ const Main = () => {
                 <div className="post-container">
 
                     <Post/>
-                    <Post/>
-                    <Post/>
-                    <Post/>
-                    <Post/>
 
                 </div>
             
