@@ -31,7 +31,7 @@ const LogIn = () => {
 
 
     return (
-        <nav className='login-page'>
+        <div className='login-page'>
             <div className='container'>
 
                 <div className='section-login'>
@@ -77,7 +77,7 @@ const LogIn = () => {
                
                 
             </div>
-        </nav>
+        </div>
     );
 }
 
