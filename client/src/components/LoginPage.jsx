@@ -63,9 +63,7 @@ const LogIn = () => {
                                     type="button" 
                                     value="REGISTRARSE"  
                                 />
-                            </a>
-     
-                             
+                            </a>   
                         </div>
                     </div>
                 </div>
@@ -73,9 +71,6 @@ const LogIn = () => {
                     <div className='section-aside'>
                         <h3>  </h3>
                     </div>
-                    
-               
-                
             </div>
         </div>
     );

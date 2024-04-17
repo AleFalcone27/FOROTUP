@@ -1,25 +1,25 @@
 
 .container{
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: baseline;
     flex-direction: column;
     align-items: baseline;
+    overflow-x: hidden;
 }
 .navbar{
     background-color: #006097;  
     width: 100vw;
-    height: 7vh;
+    height: 8vh;
     display:flex;
 }
 
 .icon-container{
-    background-color: green;
     height: 100%;
     width: 33%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     
     }
 
@@ -30,7 +30,6 @@
         display: flex;
         align-items: center;
         margin-top: 0.5vh;
-        
     }
         
 .profile-icon-container > img,
@@ -57,9 +56,20 @@
     }
         
 
-.canva{
+.canva-container{
     background-color:  #F5F5F5;
     width: 100vw;
     height: 100%;
+    display: flex;
     }
 
+
+.post-container{
+    width: 97vw;
+    height: 100vh;
+    margin: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    }

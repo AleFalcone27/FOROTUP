@@ -5,6 +5,7 @@ body{
     box-sizing: border-box;
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 100; 
+    overflow-x: hidden;
 }
 
 

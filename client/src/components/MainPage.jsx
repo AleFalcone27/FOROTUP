@@ -1,5 +1,6 @@
 import React, {useState, useEffect, Link} from 'react';
 import '../styles/MainPage.css'
+import Post from './Post';
 import LogIn from './LoginPage';
 
 const Main = () => {
@@ -32,10 +33,20 @@ const Main = () => {
 
             </nav>
 
-            <div className="canva">
+            <div className="canva-container">
 
+                <div className="create-post-conatiner"></div>
 
+                <div className="post-container">
 
+                    <Post/>
+                    <Post/>
+                    <Post/>
+                    <Post/>
+                    <Post/>
+
+                </div>
+            
             </div>
 
         </div>
