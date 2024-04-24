@@ -29,5 +29,5 @@ class Database:
             posts.append(post)
         return posts
         
-db = Database(uri,'TUSIBLOG','TUSIBLOG.TUSIBLOG_TEST')
+db = Database(uri,'TUSIBLOG','USERS')
 dbPosts = Database(uri,'TUSIBLOG','POSTS')

@@ -1,10 +1,8 @@
 import React, {useState, useEffect, Link} from 'react';
-import '../styles/MainPage.css'
+import '../styles/Feed.css'
 import Post from './Post';
-import LogIn from './LoginPage';
 
 const Main = () => {
-
     return (
 
         <div className="container">

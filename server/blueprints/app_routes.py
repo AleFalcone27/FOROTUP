@@ -25,8 +25,8 @@ def login():
     else:
         user = User('',email,password)
         
-        if user.sign_in():
-            return jsonify({"Error": "Credenciales correctas"})
+        if user.sign_in() == False:
+            return jsonify({"Info": "Credenciales correctas"})
 
         else: return jsonify({"Error": "Incorrect credentials"})
        

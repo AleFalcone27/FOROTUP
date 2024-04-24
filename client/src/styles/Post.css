@@ -27,7 +27,6 @@
     display: flex;
     flex-direction: column;
     overflow: hidden; 
-
 }
 
 .post-title-container {
@@ -46,7 +45,6 @@
     font-size:1.2em ;
     max-height: 17vh;
 }
-
 
 .post-description-container {
     max-height: 14vh;
@@ -73,14 +71,12 @@
     height: 100%;
 }
 
-
 .icon-bar button {
     background-color: #006097;  
     border: none;
     height: 100%;
     padding: 0;
 }
-
 
 .icon-bar img {
     display: flex;

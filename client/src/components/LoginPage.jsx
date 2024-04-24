@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Link} from 'react';
+import React, { useState, useEffect, Link } from 'react';
 import '../styles/LoginPage.css'
 
 const API_URL = 'http://127.0.0.1:5000';
@@ -20,7 +20,7 @@ const LogIn = () => {
             });
             if (response.ok) {
                 const data = await response.json();
-                console.log(data); 
+                console.log(data);
             } else {
                 console.error('Error al enviar los datos');
             }
@@ -33,44 +33,35 @@ const LogIn = () => {
     return (
         <div className='login-page'>
             <div className='container'>
-
                 <div className='section-login'>
                     <div className='login-container'>
-
                         <h2> INICIA CESIÓN </h2>
-                        <input 
-                        className='input-email' 
-                        type="text" 
-                        placeholder='Email'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        <input
+                            className='input-email'
+                            type="text"
+                            placeholder='Email'
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
-                        <input 
-                        className='input-pass' 
-                        type="text" 
-                        placeholder='Password'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)} 
-                         />
+                        <input
+                            className='input-pass'
+                            type="text"
+                            placeholder='Password'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
                         <div className='btn-container' >
-                            <input 
-                            type="button" 
-                            value="INGRESAR"
-                            onClick={handleSubmit}
+                            <input
+                                type="button"
+                                value="INGRESAR"
+                                onClick={handleSubmit}
                             />
                             <a href="/register">
-                                <input 
-                                    type="button" 
-                                    value="REGISTRARSE"  
-                                />
-                            </a>   
+                                REGISTRARSE
+                            </a>
                         </div>
                     </div>
                 </div>
-
-                    <div className='section-aside'>
-                        <h3>  </h3>
-                    </div>
             </div>
         </div>
     );
