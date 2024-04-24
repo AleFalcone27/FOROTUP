@@ -2,6 +2,8 @@ from flask import Blueprint, jsonify, request
 from models.user import User
 from models.dbConnection import Database
 from models.post import Post
+from bson import json_util
+import json
 from utilities.validation import *
 
 app_routes = Blueprint("app_routes", __name__,
@@ -52,9 +54,11 @@ async def feed():
     
     ## new_post = Post('PANINI GATE','Juntemos firmas para que vuelvan los paninis al buffet','Ale Falcone')
     
-    ## new_post.insert()
-    
     posts = await Database.get_posts() 
-    return jsonify({'Posts': jsonify(posts)})   
+    
+    json_data = json.dumps(posts, default=json_util.default)
+    print(json_data)
+
+    return jsonify(posts)   
     
     

@@ -19,7 +19,6 @@ const Post = () => {
             console.log(jsonData)
             if (Array.isArray(jsonData)) {
                 setPosts(jsonData);
-                console.error('is array');
             } else {
                 console.error('Data is not an array:', jsonData);
             }
@@ -28,34 +27,42 @@ const Post = () => {
         }
     };
 
-    return (
-        <div className="post">
-            <div className="post-inner-container">
-                {posts.map(post => (
-                    <div key={post.id}>
-                        <div className="post-title-container">
-                            <p className="post-title">{post.title}</p>
-                        </div>
-                        <div className="post-description-container">
-                            <p className="post-despcription">{post.description}</p>
-                        </div>
-                        <div className="icon-bar">
-                            <div className="like-container">
-                                <button type="button" className="like-btn">
-                                    <img src="../like.png" alt="Like"></img>
-                                </button>
-                            </div>
-                            <div className="comment-container">
-                                <button type="button" className="comment-btn">
-                                    <img src="../comment.png" alt="Comment"></img>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
+    {/* Al rededor de el componente Post se va a insertar el post container */}
+    return ( 
+        <div className='post-container'> 
+            {posts.map(post => (
+                <SinglePost key={post._id} post={post} /> 
+            ))}
         </div>
     );
 }
+
+const SinglePost = ({ post }) => (
+    <div className="post">
+        <div className="post-inner-container">
+                <div key={post.id}>
+                    <div className="post-title-container">
+                        <p className="post-title">{post.title}</p>
+                    </div>
+                    <div className="post-description-container">
+                        <p className="post-despcription">{post.description}</p>
+                    </div>
+                </div>
+        </div>
+        <div className="icon-bar">
+                        <div className="like-container">
+                            <button type="button" className="like-btn">
+                                <img src="../like.png" alt="Like"></img>
+                            </button>
+                        </div>
+                        <div className="comment-container">
+                            <button type="button" className="comment-btn">
+                                <img src="../comment.png" alt="Comment"></img>
+                            </button>
+                        </div>
+                    </div>
+    </div>
+);
+
 
 export default Post;
