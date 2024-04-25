@@ -24,12 +24,12 @@ def login():
         return jsonify({"Error": "Incorrect format email"})
     else:
         user = User('',email,password)
+        valid_user = user.sign_in()
+        if valid_user is not False:
+            response = json.dumps(valid_user,default=json_util.default) 
+            return response
+        else: return jsonify({"Info": "Credenciales correctas"})
         
-        if user.sign_in() == False:
-            return jsonify({"Info": "Credenciales correctas"})
-
-        else: return jsonify({"Error": "Incorrect credentials"})
-       
         
 @app_routes.route('/register', methods=['POST'])
 def register():
@@ -51,9 +51,7 @@ def register():
         
 @app_routes.route('/feed', methods=['GET'])
 async def feed():
-    
-    ## new_post = Post('PANINI GATE','Juntemos firmas para que vuelvan los paninis al buffet','Ale Falcone')
-    
+
     posts = await Database.get_posts() 
     
     json_data = json.dumps(posts, default=json_util.default)

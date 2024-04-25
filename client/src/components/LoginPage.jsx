@@ -4,7 +4,6 @@ import '../styles/LoginPage.css'
 const API_URL = 'http://127.0.0.1:5000';
 
 const LogIn = () => {
-    const [data, setData] = useState([{}]);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -20,7 +19,9 @@ const LogIn = () => {
             });
             if (response.ok) {
                 const data = await response.json();
-                console.log(data);
+                // console.log(data);
+                localStorage.setItem('username',data['username']);
+                console.log(localStorage.getItem('username'));
             } else {
                 console.error('Error al enviar los datos');
             }
