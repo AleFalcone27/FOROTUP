@@ -19,8 +19,8 @@ const LogIn = () => {
             });
             if (response.ok) {
                 const data = await response.json();
-                // console.log(data);
-                localStorage.setItem('username',data['username']);
+                var json = JSON.parse(data['Info'])
+                localStorage.setItem('username',json.username); 
                 console.log(localStorage.getItem('username'));
             } else {
                 console.error('Error al enviar los datos');
@@ -46,7 +46,7 @@ const LogIn = () => {
                         />
                         <input
                             className='input-pass'
-                            type="text"
+                            type="password"
                             placeholder='Password'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}

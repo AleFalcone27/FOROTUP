@@ -1,10 +1,17 @@
+# Dependencies imports
 from flask import Blueprint, jsonify, request
+from bson import json_util
+import json
+from flask_bcrypt import Bcrypt
+
+# moduls import
 from models.user import User
 from models.dbConnection import Database
 from models.post import Post
-from bson import json_util
-import json
 from utilities.validation import *
+
+bcrypt = Bcrypt()
+
 
 app_routes = Blueprint("app_routes", __name__,
                        template_folder="templates",
@@ -14,22 +21,21 @@ app_routes = Blueprint("app_routes", __name__,
 def root():
     return jsonify({"message": "running"})
 
-
 @app_routes.route('/login', methods=['POST'])
 def login():
-    data = request.json
-    email = data['email']
-    password = data['password']
-    if '@' not in email:
-        return jsonify({"Error": "Incorrect format email"})
-    else:
-        user = User('',email,password)
-        valid_user = user.sign_in()
-        if valid_user is not False:
-            response = json.dumps(valid_user,default=json_util.default) 
-            return response
-        else: return jsonify({"Info": "Credenciales correctas"})
+    req = request.json
+    email = req['email']
+   
+    user = User('',email,'')
+    valid_user = user.sign_in()
+    print(valid_user)
         
+    if valid_user is not False:
+        if bcrypt.check_password_hash(valid_user['password'], req['password']):
+            response = json.dumps(valid_user,default=json_util.default) 
+            return jsonify({"Info": response})
+        else: return jsonify({"Error": "Contraseña incorrecta"})
+    else: return jsonify({"Error": "Credenciales incorrectas"})
         
 @app_routes.route('/register', methods=['POST'])
 def register():
@@ -39,7 +45,8 @@ def register():
     password = data['password']
     
     if validate_email(email) and validate_username(username):
-        new_user = User(username,email,password) 
+        hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+        new_user = User(username,email,hashed_password) 
         if new_user.is_not_already_signed_up():
             if new_user.sign_up():
                 return jsonify({"message": "Register sucessfull"})

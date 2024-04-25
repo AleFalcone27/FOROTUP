@@ -26,7 +26,7 @@ class User:
             El usuario si la condición se cumple, caso contrario Falso
         """
         
-        user = db.collection.find_one({"email": self.email, "password": self.password})
+        user = db.collection.find_one({"email": self.email})
         
         if user:
             return user

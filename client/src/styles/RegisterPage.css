@@ -98,7 +98,7 @@ h2 {
     border: solid #006097 1px;
 }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
     font-size: 1.1em;
     color: #000;
 }

@@ -23,6 +23,7 @@ const Register = () => {
                     },
                     body: JSON.stringify({ email, password, username }) // agregar los demas datos de registro 
                 });
+                console.log(password);
                 if (response.ok) {
                     const data = await response.json();
                     console.log(data);
@@ -63,7 +64,7 @@ const Register = () => {
                         />
                         <input
                             className='input'
-                            type="text"
+                            type="password"
                             placeholder='Password'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
