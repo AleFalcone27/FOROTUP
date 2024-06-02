@@ -46,43 +46,56 @@ h1{
 
 .side-container{
     display: flex;
-    flex-direction: column;
     font-weight: 500;
     width: 20%;
     padding: 1%;    
-    justify-content: space-around;
-    
-    div{
-        width: fit-content;
-    }
-
-    img{
-        width: 7vw;
-    }
-
-    .upvote-container{
-        width: 100%;
-        display: flex;
-        justify-content: space-evenly;
-    }
-    .downvote-container{
-        width: 100%;
-        display: flex;
-        justify-content: space-evenly;
-    }
-    .date-container{
-        height:fit-content;   
-        align-self: center;
-
-        p{
-            font-size: 0.9em;
-            font-weight: 400;
-            margin: 0;
-            padding: 0;
-        }
-    }
-
-
-    
+    flex-direction: column; 
 }
 
+
+.upvote-container img, .downvote-container img {
+    width: 15%; 
+    height: auto;
+    transition: all ease-in-out 0.2s;
+    margin: 3%;
+}
+
+
+img:hover{
+    transform: scale(1.2);
+    cursor:pointer;
+}
+
+
+
+.upvote-container, .downvote-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px; 
+}
+
+
+.upvote-container{
+    display: flex;
+    justify-content: center;
+}
+
+.downvote-container{
+    display: flex;
+    justify-content: center;
+}
+
+.date-container{
+    height:fit-content;   
+    align-self: center;
+    justify-content: center;
+
+    p{
+        text-align: center;
+        font-size: 0.9em;
+        font-weight: 400;
+        margin: 0;
+        padding: 0;
+    }
+}

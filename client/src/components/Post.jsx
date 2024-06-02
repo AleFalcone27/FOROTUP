@@ -40,6 +40,16 @@ const Post = () => {
     'created_at': datetime.datetime(2024, 4, 17, 16, 32, 13, 29000)}
     */
 
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        const formattedDate = date.toLocaleDateString();
+        const formattedTime = date.toLocaleTimeString();
+        return `${formattedDate} ${formattedTime}`;
+    }
+
+
+
+
     return (
         <div>
             <Navbar> </Navbar>
@@ -68,7 +78,7 @@ const Post = () => {
                         </div>
 
                         <div className="date-container">
-                            <p> 12/09/24 </p>
+                            <p>{post.created_at && formatDate(post.created_at['$date'])}</p>
                         </div>
 
 
