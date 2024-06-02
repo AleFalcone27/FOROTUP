@@ -1,68 +1,82 @@
+import { useLocation } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import Navbar from './Navbar';
 import '../styles/Post.css'
 
 const API_URL = 'http://127.0.0.1:5000';
 
 const Post = () => {
 
-    const [posts, setPosts] = useState([]);
+    const [post, setPosts] = useState([]);
 
     useEffect(() => {
-        fetchData();
+        fetchPosts();
     }, []);
 
-    const fetchData = async () => {
+    const location = useLocation().pathname;
+    const lastSlashIndex = location.lastIndexOf('/');
+    const postId = location.substring(lastSlashIndex + 1);
+
+
+    const fetchPosts = async () => {
         try {
-            const response = await fetch(`${API_URL}/feed`); // Ruta al endpoint en tu servidor Flask
+            const response = await fetch(`${API_URL}/post/${postId}`);
             const jsonData = await response.json();
-            setPosts(jsonData);
-            console.log(jsonData)
-            if (Array.isArray(jsonData)) {
-                setPosts(jsonData);
-            } else {
-                console.error('Data is not an array:', jsonData);
-            }
-        } catch (error) {
+            setPosts(JSON.parse(jsonData.Post));
+        }
+        catch (error) {
             console.error('Error fetching data:', error);
         }
     };
 
-    {/* Al rededor de el componente Post se va a insertar el post container */}
-    return ( 
-        <div className='post-container'> 
-            {posts.map(post => (
-                <SinglePost key={post._id} post={post} /> 
-            ))}
-        </div>
-    );
-}
+    /*
+    title': 'Que materia pene Investigacion operativa', 
+    'description': 'Ojala la saquen del programa', 
+    'author': 'Ale Falcone', 
+    'score': 0, 
+    'comments': [], 
+    'upvotes': 0, 
+    'downvotes': 0, 
+    'created_at': datetime.datetime(2024, 4, 17, 16, 32, 13, 29000)}
+    */
 
-const SinglePost = ({ post }) => (
-    <div className="post">
-        <div className="post-inner-container">
-                <div key={post.id}>
-                    <div className="post-title-container">
-                        <p className="post-title">{post.title}</p>
+    return (
+        <div>
+            <Navbar> </Navbar>
+            <div className='father-container' >
+                <div className='main-post-container'>
+                    <div className='body-container' >
+                        <div className='author-container'>
+                            <h1>{post.author}</h1>
+                        </div>
+                        <div className='title-container'>
+                            <h2>{post.title}</h2>
+                        </div>
+                        <div className='description-container'>
+                            <p>{post.description}</p>
+                        </div>
                     </div>
-                    <div className="post-description-container">
-                        <p className="post-despcription">{post.description}</p>
+
+                    <div className='side-container' >
+                        <div className="upvote-container">
+                            <p> 45 </p>
+                            <img src="../upvote.png" alt="upvotes" />
+                        </div>
+                        <div className="downvote-container">
+                            {post.downvotes}
+                            <img src="../downvote.png" alt="downvotes" />
+                        </div>
+
+                        <div className="date-container">
+                            <p> 12/09/24 </p>
+                        </div>
+
+
                     </div>
                 </div>
+            </div>
         </div>
-        <div className="icon-bar">
-                        <div className="like-container">
-                            <button type="button" className="like-btn">
-                                <img src="../like.png" alt="Like"></img>
-                            </button>
-                        </div>
-                        <div className="comment-container">
-                            <button type="button" className="comment-btn">
-                                <img src="../comment.png" alt="Comment"></img>
-                            </button>
-                        </div>
-                    </div>
-    </div>
-);
+    );
 
-
+}
 export default Post;

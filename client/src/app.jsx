@@ -5,6 +5,7 @@ import Register from './components/RegisterPage';
 import Feed from './components/Feed';
 import PrivateRoute from './components/PrivateRoute';
 import Logout from './components/Logut';
+import Post from './components/Post';
 
 const App = () => {
   return (
@@ -14,14 +15,8 @@ const App = () => {
         <Route path="/logout" element={<Logout/>} />
         <Route path="/register" element={<Register/>} />
         {/* Rutas protegidas */}
-        <Route 
-          path="/feed" 
-          element={
-            <PrivateRoute>
-              <Feed/>
-            </PrivateRoute>
-          } 
-        />
+        <Route path="/feed" element={<PrivateRoute><Feed/></PrivateRoute>}/>
+        <Route path="/post/:id" element={<PrivateRoute><Post/></PrivateRoute>}/>
       </Routes>
     </Router>
   );

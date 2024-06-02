@@ -59,11 +59,18 @@ def register():
 @app_routes.route('/feed', methods=['GET'])
 async def feed():
 
-    posts = await Database.get_posts() 
+    posts = await Post.get_posts() 
     
     json_data = json.dumps(posts, default=json_util.default)
     print(json_data)
 
     return jsonify(posts)   
     
-    
+
+@app_routes.route('/post/<id>', methods=['GET'])
+async def get_post(id):
+    post = await Post.get_post_by_id(id)
+    if post:
+        response = json.dumps(post,default=json_util.default) 
+        return make_response(jsonify({"Post": response}), 200) 
+    else: return make_response(jsonify({"Info": "Error"}), 401)

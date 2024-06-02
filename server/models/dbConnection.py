@@ -7,27 +7,6 @@ class Database:
         self.client = MongoClient(db_uri)
         self.db = self.client[db_name]
         self.collection = self.db[db_collection]
-    
-    async def get_posts():
-        posts = []
-        for post in dbPosts.collection.find():
-            # Convertimos ObjectId a str ya que este no permite la serialziacion a Json por defecto
-            
-            post['_id'] = str(post['_id'])
-            
-            post = {
-                'title': post['title'],
-                '_id': post['_id'],
-                'description': post['description'],
-                'author': post['author'],
-                'score': post['score'],
-                'comments': post['comments'],
-                'create_at': post['created_at'],
-                'upvotes': post['upvotes'],
-                'downvotes': post['downvotes']}
-            
-            posts.append(post)
-        return posts
         
 db = Database(uri,'TUSIBLOG','USERS')
 dbPosts = Database(uri,'TUSIBLOG','POSTS')
