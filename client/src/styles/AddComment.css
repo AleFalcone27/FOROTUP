@@ -1,0 +1,39 @@
+.add-comment-container{
+    display: flex;
+    margin-left:7.5%;
+    margin-top: 2%;
+    background-color: #006097;
+    height: 10vh;
+    padding: 1%;
+    width: 83%;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+textarea {
+    width: 80%;
+    height: 80%;
+    resize: none;
+    margin: 1%;
+} 
+
+input{
+    align-self: center;
+    justify-self: center;
+    width: 10%;
+    height: 80%;
+    background-color: #f5f5f5;
+    border: none;
+    margin-top: 1%;
+    transition: all ease-in-out 0.4;
+}
+
+input:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+input:active{
+    transform: scale(1);
+}
+

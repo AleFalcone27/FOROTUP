@@ -69,3 +69,33 @@ class Post:
         else: 
             return False
         
+    
+    # Tengo que guardar en la lista de comentarios del post solo los ids de los comentarios
+    # Guardar el registro de comentario, traerme el id y agregarlo a la lista de comentarios del post 
+    
+    # async def add_comment(id,Commentcoment):
+    #     """ 
+    #     Sumary:
+    #         Buscamos el post en la base da tos por id 
+        
+    #     Args:
+    #         id: id del post
+        
+    #     Returns:
+    #         El post si la busqueda fue éxitosa , caso contrario Falso
+    #     """
+    
+    #     filter = {'_id': ObjectId(id)}
+    #     update = {'$set': update_fields}
+    
+    
+    #     post_id = ObjectId(id)
+    #     post = dbPosts.collection.find_one({"_id": post_id})
+        
+    #     print(post)
+        
+    #     if post:
+    #         return post
+    #     else: 
+    #         return False
+        

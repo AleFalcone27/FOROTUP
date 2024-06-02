@@ -67,10 +67,14 @@ async def feed():
     return jsonify(posts)   
     
 
-@app_routes.route('/post/<id>', methods=['GET'])
+@app_routes.route('/post/<id>', methods=['GET','POST'])
 async def get_post(id):
-    post = await Post.get_post_by_id(id)
-    if post:
-        response = json.dumps(post,default=json_util.default) 
-        return make_response(jsonify({"Post": response}), 200) 
-    else: return make_response(jsonify({"Info": "Error"}), 401)
+    if request.method == 'GET':
+        post = await Post.get_post_by_id(id)
+        if post:
+            response = json.dumps(post,default=json_util.default) 
+            return make_response(jsonify({"Post": response}), 200) 
+        else: return make_response(jsonify({"Info": "Error"}), 401)
+    if request.method == 'POST':
+        print(request.json)
+    return make_response(jsonify({"Info": "Error"}), 401)

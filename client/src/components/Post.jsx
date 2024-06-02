@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
+import AddComment from './addComment';
 import '../styles/Post.css'
 
 const API_URL = 'http://127.0.0.1:5000';
@@ -48,8 +49,6 @@ const Post = () => {
     }
 
 
-
-
     return (
         <div>
             <Navbar> </Navbar>
@@ -69,7 +68,7 @@ const Post = () => {
 
                     <div className='side-container' >
                         <div className="upvote-container">
-                            <p> 45 </p>
+                        {   post.upvotes}
                             <img src="../upvote.png" alt="upvotes" />
                         </div>
                         <div className="downvote-container">
@@ -80,11 +79,10 @@ const Post = () => {
                         <div className="date-container">
                             <p>{post.created_at && formatDate(post.created_at['$date'])}</p>
                         </div>
-
-
                     </div>
                 </div>
             </div>
+            <AddComment></AddComment>
         </div>
     );
 
