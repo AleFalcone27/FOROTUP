@@ -12,7 +12,6 @@ class User:
         self.bio = ''
         self.saved_posts = [] 
         
-        
     def sign_in(self):
         """ 
         Sumary:

@@ -2,7 +2,7 @@ import React, {useState, useEffect, Link} from 'react';
 import '../styles/Feed.css'
 import Post from './Post';
 
-const Main = () => {
+const Feed = () => {
     return (
 
         <div className="container">
@@ -29,4 +29,4 @@ const Main = () => {
 
 }
 
-export default Main
+export default Feed

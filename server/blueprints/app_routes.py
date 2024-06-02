@@ -1,5 +1,5 @@
 # Dependencies imports
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, make_response
 from bson import json_util
 import json
 from flask_bcrypt import Bcrypt
@@ -30,12 +30,12 @@ def login():
     valid_user = user.sign_in()
     print(valid_user)
         
-    if valid_user is not False:
+    if valid_user:
         if bcrypt.check_password_hash(valid_user['password'], req['password']):
             response = json.dumps(valid_user,default=json_util.default) 
-            return jsonify({"Info": response})
-        else: return jsonify({"Error": "Contraseña incorrecta"})
-    else: return jsonify({"Error": "Credenciales incorrectas"})
+            return make_response(jsonify({"Info": response}), 200)  # 200 OK 
+        else: return make_response(jsonify({"Info": "Error contraseña incorrecta"}), 401)
+    else: return make_response(jsonify({"Info": "Error credenciales incorrectas"}), 401)
         
 @app_routes.route('/register', methods=['POST'])
 def register():

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Link } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/LoginPage.css'
 
 const API_URL = 'http://127.0.0.1:5000';
@@ -6,6 +7,7 @@ const API_URL = 'http://127.0.0.1:5000';
 const LogIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,15 +23,14 @@ const LogIn = () => {
                 const data = await response.json();
                 var json = JSON.parse(data['Info'])
                 localStorage.setItem('username',json.username); 
-                console.log(localStorage.getItem('username'));
+                navigate('/feed');
             } else {
-                console.error('Error al enviar los datos');
+                console.error('Credenciales incorrectas');
             }
         } catch (error) {
             console.error('Error:', error);
         }
     };
-
 
     return (
         <div className='login-page'>
